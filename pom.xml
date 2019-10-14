@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.dasetova</groupId>
 	<artifactId>binary-tree-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>binary-tree-api</name>
 	<description>Demo project for Spring Boot</description>
 
