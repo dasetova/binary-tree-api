@@ -1,5 +1,7 @@
 package com.dasetova.binarytreeapi.repositories;
 
+import java.util.Optional;
+
 import com.dasetova.binarytreeapi.models.BinaryTree;
 
 /**
@@ -12,5 +14,7 @@ import com.dasetova.binarytreeapi.models.BinaryTree;
 public interface IBinaryTreeRepository {
 	
 	public BinaryTree generate(Integer maxValue, Integer treeSize);
+	
+	public Optional<BinaryTree> getById(Integer id);
 
 }

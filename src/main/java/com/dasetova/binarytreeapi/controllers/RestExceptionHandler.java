@@ -9,8 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import com.dasetova.binarytreeapi.exceptions.NotFoundException;
 
 /**
  * The Class RestExceptionHandler.
@@ -33,6 +36,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 	        errors.put(fieldName, errorMessage);
 	    });
 	    return handleExceptionInternal(ex, errors, headers, HttpStatus.BAD_REQUEST, request);
+	}
+	
+	@ExceptionHandler({ NotFoundException.class })
+	public ResponseEntity<Map<String,String>> handleNotFound(NotFoundException ex, WebRequest request) {
+		Map<String, String> errors = new HashMap<>();
+		errors.put("Error: ", ex.getMessage());
+		return new ResponseEntity<Map<String,String>>(errors, HttpStatus.NOT_FOUND);
 	}
 	
 }
