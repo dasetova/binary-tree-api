@@ -1,6 +1,7 @@
 package com.dasetova.binarytreeapi.services;
 
 import com.dasetova.binarytreeapi.models.BinaryTree;
+import com.dasetova.binarytreeapi.models.Node;
 
 /**
  * The Interface IBinaryTreeService.
@@ -12,4 +13,6 @@ import com.dasetova.binarytreeapi.models.BinaryTree;
 public interface IBinaryTreeService {
 
 	public BinaryTree createBinaryTree(Integer maxValue, Integer treeSize);
+	
+	public Node getLowestCommonAncestor(Integer treeId, Integer value1, Integer value2);
 }
