@@ -3,6 +3,7 @@ package com.dasetova.binarytreeapi.repositories;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 
@@ -70,5 +71,23 @@ public class BinaryTreeRepository implements IBinaryTreeRepository {
 		}
 
 		return values;
+	}
+
+	/**
+	 * Gets Tree by id.
+	 *
+	 * @param id the treeId
+	 * @return Nullable Optional if exists 
+	 */
+	@Override
+	public Optional<BinaryTree> getById(Integer id) {
+		BinaryTree binaryTree = null;
+		for(BinaryTree tree : binaryTrees) {
+			if (tree.getId() == id) {
+				binaryTree = tree;
+				break;
+			}
+		}
+		return Optional.ofNullable(binaryTree);
 	}
 }

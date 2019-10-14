@@ -1,7 +1,9 @@
 package com.dasetova.binarytreeapi.repositories;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,5 +30,16 @@ public class BinaryTreeRepositoryTest {
 		assertNotNull(secondTree);
 		assertEquals(secondTree.getSize(), Integer.valueOf(10));
 		assertEquals(secondTree.getId(), Integer.valueOf(2));
+	}
+	
+	@Test
+	public void whenGetByIdExistingTreeReturnTheTree() {
+		BinaryTree tree = treeRepository.generate(10, 10);
+		assertTrue(treeRepository.getById(tree.getId()).isPresent());
+	}
+	
+	@Test
+	public void whenGetByIdNonExistingTreeReturnTheEmpty() {
+		assertFalse(treeRepository.getById(0).isPresent());
 	}
 }
